@@ -10,6 +10,9 @@ RUN add-apt-repository 'deb http://mirror.jmu.edu/pub/mariadb/repo/10.0/ubuntu t
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server
 
+# Mount Data Volume
+VOLUME /var/lib/mysql
+
 # Setup
 ADD my.cnf /etc/mysql/conf.d/my.cnf
 ADD create_admin.sh /create_admin.sh
@@ -17,4 +20,4 @@ RUN /create_admin.sh
 
 # Run
 EXPOSE 3306
-ENTRYPOINT mysqld_safe
+CMD mysqld_safe
