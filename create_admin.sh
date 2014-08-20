@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Check if the server is running and accepting mysql commands.
 srv_ready?(){
   set -e
   mysql -uroot -e "show databases";
